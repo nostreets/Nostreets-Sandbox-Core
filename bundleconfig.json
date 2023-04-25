@@ -1,0 +1,260 @@
+[
+  //// ----------------- DEV ----------------- ////
+  //+BOOTSTRAP CSS
+  {
+    "outputFileName": "wwwroot/css/bundle/dev/bootstrap.css",
+    "inputFiles": [
+      "wwwroot/lib/bootstrap/dist/css/bootstrap.css",
+      "wwwroot/lib/bootstrap/dist/css/bootstrap-theme.css"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  //+NOSTREETS PORTFOLIO CSS
+  {
+    "outputFileName": "wwwroot/css/bundle/dev/nostreets.css",
+    "inputFiles": [
+      //+MATERIAL DESIGN LITE
+      "wwwroot/lib/material-design-lite/material.css",
+      "wwwroot/lib/material-design-lite/material.blue_grey-indigo.min.css",
+
+      //+CUSTOM
+      "wwwroot/css/theme-Dark.css",
+      "wwwroot/css/material-dashboard.css",
+      "wwwroot/css/chartist-plugin-tooltip.css",
+      "wwwroot/css/nostreets.css",
+
+      //+OTHER
+      "wwwroot/lib/angular-ui-bootstrap/dist/ui-bootstrap-csp.css",
+      "wwwroot/lib/angular-toastr/dist/angular-toastr.css",
+      "wwwroot/lib/angularjs-color-picker/dist/angularjs-color-picker.css",
+      "wwwroot/lib/angularjs-color-picker/dist/themes/angularjs-color-picker-bootstrap.min.css"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  //+JQUERY
+  {
+    "outputFileName": "wwwroot/js/bundle/dev/jquery.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery/dist/jquery.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  //+JQUERY DEPENDENIES
+  {
+    "outputFileName": "wwwroot/js/bundle/dev/jquery-childs.js",
+    "inputFiles": [
+
+      //+VALIDATION
+      "wwwroot/lib/jquery-validation/dist/jquery.validate.js",
+
+      //+POPPER
+      "wwwroot/lib/popper.js/umd/popper.min.js",
+
+      //+BOOTSTRAP
+      "wwwroot/lib/bootstrap/dist/js/bootstrap.js",
+
+      //+MATERIAL DESIGN LITE
+      "wwwroot/lib/material-design-lite/material.js",
+      "wwwroot/lib/assets/material.min.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  //+ANGULAR
+  {
+    "outputFileName": "wwwroot/js/bundle/dev/angular.js",
+    "inputFiles": [
+      "wwwroot/lib/angular.js/angular.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  //+ANGULAR DEPENDENIES
+  {
+    "outputFileName": "wwwroot/js/bundle/dev/angular-childs.js",
+    "inputFiles": [
+      "wwwroot/lib/angular-animate/angular-animate.js",
+      "wwwroot/lib/angular-sanitize/angular-sanitize.js",
+      "wwwroot/lib/angular-cookies/angular-cookies.js",
+
+      "wwwroot/lib/angular-route/angular-route.js",
+      "wwwroot/lib/angular-ui-router/release/angular-ui-router.js",
+
+      "wwwroot/lib/angular-toastr/dist/angular-toastr.tpls.min.js",
+      "wwwroot/lib/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js",
+
+
+      "wwwroot/lib/tinycolor/tinycolor.js",
+      "wwwroot/lib/angularjs-color-picker/dist/angularjs-color-picker.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  //+NOSTREETS PORTFOLIO SCRIPTS
+  {
+    "outputFileName": "wwwroot/js/bundle/dev/nostreets.js",
+    "inputFiles": [
+      "wwwroot/js/shared/core/page.js",
+      "wwwroot/js/nostreets/app/page.js",
+      "wwwroot/js/shared/core/extend.js",
+      "wwwroot/js/shared/services/alertService.js",
+      "wwwroot/js/shared/services/systemEvent.service.js",
+      "wwwroot/js/shared/core/baseController.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  //+NOSTREETS PORTFOLIO SCRIPTS
+  {
+    "outputFileName": "wwwroot/js/bundle/dev/nostreets-addons.js",
+    "inputFiles": [
+      //+OTHER
+      "wwwroot/lib/assets/sweetalert2.js",
+      "wwwroot/lib/chartist/chartist.min.js", //Chartist.js
+      "wwwroot/lib/chartist-plugin-tooltip/chartist-plugin-tooltip.min.js",
+      "wwwroot/lib/assets/chartist-plugin-zoom.min.js",
+
+      //+CUSTOM
+      "wwwroot/lib/assets/particles.js",
+      "wwwroot/lib/assets/renderNostreetsParticles.js", // Background Particles
+      "wwwroot/js/shared/services/nostreetsChartistScrollPlugin.js", // Nostreets Chartist Scroll Plugin
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  //+NOSTREETS PORTFOLIO ANGULAR
+  {
+    "outputFileName": "wwwroot/js/bundle/dev/nostreets-ng.js",
+    "inputFiles": [
+      "wwwroot/js/nostreets/app/configs/routeProviderConfig.js",
+      "wwwroot/js/shared/services/apiService.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  //+OBL CSS
+  {
+    "outputFileName": "wwwroot/css/bundle/dev/obl.css",
+    "inputFiles": [
+      //+MATERIAL DESIGN LITE
+      "wwwroot/lib/material-design-lite/material.css",
+      "wwwroot/lib/material-design-lite/dist/material.red-amber.min.css",
+
+
+      //+OTHER
+      "wwwroot/lib/angular-ui-bootstrap/dist/ui-bootstrap-csp.css",
+      "wwwroot/lib/angular-toastr/dist/angular-toastr.css",
+      "wwwroot/lib/angularjs-color-picker/dist/angularjs-color-picker.css",
+      "wwwroot/lib/angularjs-color-picker/dist/themes/angularjs-color-picker-bootstrap.min.css",
+      "wwwroot/lib/animate.css/animate.css",
+      "wwwroot/css/fullpage.css",
+      "wwwroot/css/jquery.fullpage.css",
+
+
+      //+CUSTOM
+      "wwwroot/css/material-dashboard.css",
+      "wwwroot/css/chartist-plugin-tooltip.css",
+      "wwwroot/css/obl.css"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  //+OBL SCRIPTS
+  {
+    "outputFileName": "wwwroot/js/bundle/dev/obl.js",
+    "inputFiles": [
+      //+3RD PARTY CODE
+      "wwwroot/lib/dat.gui/build/dat.gui.js",
+      "wwwroot/lib/assets/particles.js", // Background Particles Library
+      "wwwroot/lib/assets/sweetalert2.js",
+      "wwwroot/lib/assets/chartist.min.js", //Chartist.js
+      "wwwroot/lib/assets/chartist-plugin-tooltip.min.js",
+      "wwwroot/lib/assets/chartist-plugin-zoom.min.js",
+      "wwwroot/lib/assets/fullpage.js", //fullPage.js
+      "wwwroot/lib/assets/easings.js", //fullPage.js easings
+      "wwwroot/lib/assets/jquery.fullpage.js", //JQuery fullPage.js
+      "wwwroot/lib/assets/angular-fullpage.js", //Angular Wrapper For FullPage.js
+      "wwwroot/lib/assets/angular-soundmanager2.js", //Angular Music Player
+
+
+      //+CUSTOM CORE CODE
+      "wwwroot/lib/assets/renderOBLParticles.js", // Render Background Particles                          
+      "wwwroot/js/shared/core/page.js",
+      "wwwroot/js/obl/app/page.js",
+      "wwwroot/js/shared/core/extend.js",
+      "wwwroot/js/shared/core/baseController.js",
+
+
+      //+OTHER CUSTOM CODE
+      "wwwroot/js/shared/services/nostreetsChartistScrollPlugin.js" // Nostreets Chartist Scroll Plugin
+
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  //+OBL ANGULAR
+  {
+    "outputFileName": "wwwroot/js/bundle/dev/ng-obl.js",
+    "inputFiles": [
+      //+CUSTOM ANGULARJS SERVICES
+      "wwwroot/js/shared/services/alertService.js",
+      "wwwroot/js/shared/services/systemEvent.service.js",
+      "wwwroot/js/shared/services/apiService.js",
+
+
+      //+CUSTOM ANGULARJS DIRECTIVES
+      "wwwroot/js/shared/directives/googleSigninDirective.js",
+      "wwwroot/js/shared/directives/facebookSigninDirective.js",
+      "wwwroot/js/shared/directives/renderElementDirective.js"
+
+
+      //+CUSTOM ANGULARJS CONFIGS
+      //"wwwroot/js/obl/app/configs/stateProviderConfig.js"
+
+
+      //+CUSTOM ANGULARJS CONTROLLERS
+      //"wwwroot/js/obl/app/controllers/generalControllers.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

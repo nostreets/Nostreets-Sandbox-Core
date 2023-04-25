@@ -1,0 +1,25 @@
+﻿@page
+@model Nostreets_Sandbox_Core.Pages.Shared._ServerModelModel
+@{
+    @using global::Nostreets.Extensions.Extend.Basic;
+}
+
+
+<script type="text/javascript">
+    (function () {
+        "use strict";
+
+        angular.module(page.APPNAME)
+            .factory('$serverModel', baseServerModel);
+
+        function baseServerModel() {
+
+            var thisModel = this;
+
+            thisModel = $.extend(true, {}, @(ViewData != null && ViewData["ServerModel"] != null ? Html.Raw(((object)ViewData["ServerModel"]).JsonSerialize()) : Html.Raw("{}")), thisModel);
+            return thisModel;
+        }
+
+    })();
+</script>
+

@@ -1,0 +1,73 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "popper.js@2.11.6",
+      "destination": "wwwroot/lib/popper.js/",
+      "files": [
+        "umd/popper.min.js"
+      ]
+    },
+    {
+      "library": "material-design-lite@1.3.0",
+      "destination": "wwwroot/lib/material-design-lite/"
+    },
+    {
+      "library": "angular.js@1.8.3",
+      "destination": "wwwroot/lib/angular.js/"
+    },
+    {
+      "library": "angular-animate@1.8.3",
+      "destination": "wwwroot/lib/angular-animate/"
+    },
+    {
+      "library": "angular-sanitize@1.8.3",
+      "destination": "wwwroot/lib/angular-sanitize/"
+    },
+    {
+      "library": "angular-cookies@1.8.3",
+      "destination": "wwwroot/lib/angular-cookies/"
+    },
+    {
+      "library": "angular-route@1.8.3",
+      "destination": "wwwroot/lib/angular-route/"
+    },
+    {
+      "library": "angular-ui-router@1.0.30",
+      "destination": "wwwroot/lib/angular-ui-router/"
+    },
+    {
+      "library": "angular-toastr@2.1.1",
+      "destination": "wwwroot/lib/angular-toastr/"
+    },
+    {
+      "library": "angular-ui-bootstrap@2.5.6",
+      "destination": "wwwroot/lib/angular-ui-bootstrap/"
+    },
+    {
+      "library": "tinycolor@1.5.2",
+      "destination": "wwwroot/lib/tinycolor/"
+    },
+    {
+      "library": "angularjs-color-picker@3.4.8",
+      "destination": "wwwroot/lib/angularjs-color-picker/"
+    },
+    {
+      "library": "sweetalert@2.1.2",
+      "destination": "wwwroot/lib/sweetalert/"
+    },
+    {
+      "library": "chartist@0.11.4",
+      "destination": "wwwroot/lib/chartist/"
+    },
+    {
+      "library": "chartist-plugin-tooltip@0.0.11",
+      "destination": "wwwroot/lib/chartist-plugin-tooltip/"
+    },
+    {
+      "library": "fullPage.js@4.0.15",
+      "destination": "wwwroot/lib/fullPage.js/"
+    }
+  ]
+}

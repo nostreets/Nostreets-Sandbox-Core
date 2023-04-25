@@ -1,0 +1,391 @@
+﻿<div>
+    <div class="row">
+        <h2 class="text-center text-primary text-blueish">Bill Manager</h2>
+        <ul class="nav nav-tabs nav-justified">
+            <li role="presentation" class="active">
+                <a class="assetSwitcher" role="tab" data-target="#incomeTab" data-toggle="tab" ng-click="pg.changeCurrentTab('income')">Incomes</a>
+            </li>
+            <li role="presentation">
+                <a class="assetSwitcher" role="tab" data-target="#combinedTab" data-toggle="tab" ng-click="pg.changeCurrentTab('combined')">Incomes & Expenses</a>
+            </li>
+            <li role="presentation">
+                <a class="assetSwitcher" role="tab" data-target="#expenseTab" data-toggle="tab" ng-click="pg.changeCurrentTab('expense')">Expenses</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="row">
+        <div ng-if="pg.isLoggedIn">
+
+            <div class="col-sm-4 col-sm-offset-1 text-center" style="margin-top: 2%">
+                <strong class="text-greyBold">Beginning Date:</strong>
+                <div class="input-group">
+                    <input type="datetime"
+                           uib-datepicker-popup
+                           ng-model="pg.beginDate"
+                           ng-change="pg.updateChart()"
+                           class="form-control well well-sm text-center mdl-color-text--white"
+                           is-open="pg.isStart"
+                           close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button"
+                                class="btn btn-xs btn-simple"
+                                ng-click="pg.openDatePicker('start')">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-sm-2 text-center" style="margin: 3% 0% 3% 0%;">
+                <strong class="text-greyBold"> Line Style</strong>
+                <div>
+                    <select name="lineStyle" ng-if="pg.chartType == 'line'" ng-change="pg.updateChart()" ng-model="pg.chartLineStyle">
+                        <option value="none">None</option>
+                        <option value="smooth">Smooth</option>
+                        <option value="step">Step</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-sm-4 col-sm-offset-1 text-center" style="margin-top: 2%">
+                <strong class="text-greyBold">Ending Date:</strong>
+                <div class="input-group">
+                    <input type="datetime"
+                           uib-datepicker-popup
+                           ng-model="pg.endDate"
+                           ng-change="pg.updateChart()"
+                           class="form-control well well-sm text-center mdl-color-text--white"
+                           is-open="pg.isEnding"
+                           close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button"
+                                class="btn btn-xs btn-simple"
+                                ng-click="pg.openDatePicker('end')">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div ng-if="pg.isLoggedIn" class="row">
+        <div id="assetChartTabContainer" class="tab-content">
+
+            <div id="incomeTab" class="tab-pane active fade in" role="tabpanel">
+                <div class="col-xs-12">
+                    <div class="card">
+
+                        <div class="card-header text-center">
+                            <h6>{{ pg.charts[0].data.name }}</h6>
+                        </div>
+
+                        <div class="card-content text-center">
+
+                            <div ng-show="!pg.isLoading && !pg.isChartEmpty"
+                                 id="incomeChart"
+                                 class="card-content text-center ct-golden-section">
+                            </div>
+
+                            <div ng-show="pg.isLoading">
+                                <div class="mdl-spinner mdl-js-spinner mdl-spinner--single-color is-active"></div>
+                            </div>
+
+                            <div ng-show="pg.isChartEmpty">
+                                <div>Chart currently has no data...</div>
+                                <div>Add an Income or Expense to see payment predictions...</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="expenseTab" class="tab-pane fade" role="tabpanel">
+                <div class="col-xs-12">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h6>{{ pg.charts[1].data.name }}</h6>
+                        </div>
+                        <div class="card-content text-center">
+                            <div ng-show="!pg.isLoading && !pg.isChartEmpty"
+                                 id="expenseChart"
+                                 class="card-content text-center ct-golden-section">
+                            </div>
+                            <div ng-show="pg.isLoading">
+                                <div class="mdl-spinner mdl-js-spinner mdl-spinner--single-color is-active"></div>
+                            </div>
+                            <div ng-show="pg.isChartEmpty">
+                                <div>Chart currently has no data...</div>
+                                <div>Add an Income or Expense to see payment predictions...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="combinedTab" class="tab-pane fade" role="tabpanel">
+                <div class="col-xs-12">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h6>{{ pg.charts[2].data.name }}</h6>
+                        </div>
+                        <div class="card-content text-center">
+                            <div ng-show="!pg.isLoading && !pg.isChartEmpty"
+                                 id="combinedChart"
+                                 class="card-content text-center ct-golden-section">
+                            </div>
+                            <div ng-show="pg.isLoading">
+                                <div class="mdl-spinner mdl-js-spinner mdl-spinner--single-color is-active"></div>
+                            </div>
+                            <div ng-show="pg.isChartEmpty">
+                                <div>Chart currently has no data...</div>
+                                <div>Add an Income or Expense to see payment predictions...</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div ng-if="pg.isLoggedIn"
+                 class="card"
+                 style="padding-bottom: 2%;">
+                <div class="card-header">
+                    <button data-toggle="tab" role="tab" class="btn btn-simple pull-right" ng-show="pg.currentTab !== 'combined'" ng-click="pg.openInsertModal()">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+
+                    <ul class="nav nav-tabs nav-justified tabs-basic">
+                        <li role="presentation" class="active">
+                            <a role="tab" data-target="#assetsTab" data-toggle="tab">{{ (pg.currentTab == 'income') ? 'Incomes' : (pg.currentTab == 'expense') ? 'Expenses' : 'Incomes & Expenses' }}</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="tab" data-target="#totalsTab" data-toggle="tab">Totals</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="card-content text-center">
+
+                    <div class="tab-content">
+
+                        <div id="assetsTab" class="active tab-pane fade in" role="tabpanel">
+                            <div ng-repeat="item in pg.legend">
+                                <div class="col-xs-12 text-center">
+                                    <div class="col-sm-1">
+                                        <color-picker ng-model="item.style.color"
+                                                      event-api="pg.cpEventApi"
+                                                      options="pg.cpOptions">
+
+                                        </color-picker>
+                                    </div>
+
+                                    <div class="col-sm-6 col-sm-push-6">
+                                        <div class="btn-group btn-group-xs btn-group-toggle" data-toggle="buttons">
+                                            <button class="btn btn-round"
+                                                    style="background-color: #d1b100"
+                                                    ng-click="pg.openInsertModal(item)">
+                                                Edit
+                                            </button>
+                                            <button class="btn btn-round"
+                                                    ng-class="{'btn-toggle0': !item.isHiddenOnChart, 'btn-toggle1': item.isHiddenOnChart }"
+                                                    ng-click="pg.toggleVisiblity(item)">
+                                                {{ (item.isHiddenOnChart === false) ? 'Hide' : 'Show' }}
+                                            </button>
+                                            <button class="btn btn-round"
+                                                    style="background-color: #CB2A2A"
+                                                    ng-click="pg.deleteAsset(item)">
+                                                X
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-xs-12 text-center">
+                                    <h4>{{ item.name }}</h4>
+                                    <div>
+                                        {{ (item.incomeType) ? '+' :  '-' }}
+                                        {{ item.cost | currency }}
+                                        {{ item.rate === 3 ? 'Per Year' : item.rate === 5 ? 'Per Month' : item.rate === 7 ? 'Per Week' : item.rate === 9 ? 'Per Hour' : item.rate === 8 ? 'Per Day' : '' }}
+                                    </div>
+
+                                    <small>
+                                        Income Type: {{ (item.incomeType) ? pg.enums.income[item.incomeType] : pg.enums.expense[item.expenseType] }}
+                                    </small>
+                                    <br />
+                                    <small>
+                                        {{ (item.incomeType) ? 'Paycheck ' : 'Payment ' }} Frequency: {{  pg.enums.schedule[item.paySchedule] }}
+                                    </small>
+                                    <br />
+                                    <small>
+                                        Date Paid: {{ (item.paySchedule == 3 || item.paySchedule == 4) ? ((item.timePaid | date:'MMMM d') + pg.dateEnding(item.timePaid)) :  (item.paySchedule == 6 || item.paySchedule == 7) ? (item.timePaid | date:'EEEE') : (item.paySchedule == 8 || item.paySchedule == 9) ? (item.timePaid | date:'h:mma') : (item.paySchedule == 5) ? ((item.timePaid | date:'d') + pg.dateEnding(item.timePaid)) : (item.timePaid | date:'longDate') }}
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="totalsTab" class="tab-pane fade" role="tabpanel">
+                            <div>
+                                <div class="row" ng-repeat="item in pg.totals">
+                                    <div class="col-xs-offset-1 col-xs-2"><h4>{{ item.date }}</h4></div>
+                                    <div class="col-xs-10" ng-repeat="cost in item.costs">
+                                        {{ cost.name + ': ' + ((cost.cost > 0) ? '+' : '') + (cost.cost | currency) }}
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="col-xs-12 col-xs-offset-2">
+                                    Overall Amount: {{ ((pg.overallCost > 0) ? '+' : '') + (pg.overallCost | currency) }}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div ng-if="!pg.isLoggedIn" class="card">
+                <div class="card-content text-center">
+                    User needs to be logged in to use this service...
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/ng-template" id="modalExpenseBuilder.html">
+    <div class="card modal-body">
+
+        <form name="form" novalidate>
+            <div class="card-content">
+                <div ng-show="!pg.isLoading">
+                    <div class="row" align="center">
+                        <div class="col-xs-1">
+                            <color-picker ng-model="mc.style.color" api="mc.cpApi" options="mc.cpOptions"></color-picker>
+                        </div>
+                    </div>
+                    <div class="row" align="center">
+                        <div class="row" style="margin-bottom: 2%;">
+                            <div class="col-sm-6">
+                                <div><strong>{{ mc.type == "income" ? "Income" : "Expense" }} Name:</strong></div>
+                                <input type="text"
+                                       class="input-sm"
+                                       required
+                                       ng-model="mc.name" />
+                            </div>
+                            <div class="col-sm-3">
+                                <div><strong>{{ mc.type == "income" ? "Pay" : "Cost" }}:</strong></div>
+                                <input type="number"
+                                       class="input-sm"
+                                       required
+                                       ng-model="mc.cost" />
+                            </div>
+                            <div class="col-sm-3">
+                                <div><strong>Rate:</strong></div>
+                                <select ng-model="mc.rate" ng-options="item.value as item.label for item in mc.rateScheduleTypes"></select>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom: 2%;">
+                            <div ng-class="{'col-sm-6': mc.rate === 2, 'col-sm-3': mc.rate !== 2}">
+                                <div><strong>{{ mc.type == "income" ? "Income" : "Expense" }} Type:</strong></div>
+
+                                <select ng-if="mc.type == 'income'"
+                                        ng-model="mc.incomeType"
+                                        ng-options="item.value as item.label for item in mc.incomeTypes"></select>
+
+                                <select ng-if="mc.type != 'income'"
+                                        ng-model="mc.expenseType"
+                                        ng-options="item.value as item.label for item in mc.expenseTypes"></select>
+
+                            </div>
+                            <div ng-class="{'col-sm-6': mc.rate === 2, 'col-sm-3': mc.rate !== 2}">
+                                <div><strong>{{ (mc.type === 'income') ? 'Paycheck' : 'Payment' }} Frequency:</strong></div>
+
+                                <select ng-model="mc.paySchedule"
+                                        ng-options="item.value as item.label for item in mc.payScheduleTypes"
+                                        ng-change="mc.updateEnums('rate')"></select>
+                            </div>
+                            <div ng-if="mc.rate != '2'" class="col-sm-6">
+                                <div>
+                                    <strong>
+                                        Number of  Paid
+                                        {{ (mc.rate === 11) ? 'Hours' : (mc.rate === 10) ? 'Days' : (mc.rate === 9) ? 'Weeks' : (mc.rate === 6) ? 'Months' : 'Years' }}
+
+                                        {{ (mc.paySchedule === 1) ? 'Per Occasion' : (mc.paySchedule === 3) ? 'Per Year' : (mc.paySchedule === 4) ? 'Every 6 Months' : (mc.paySchedule === 5) ? 'Per Quarter' :  (mc.paySchedule === 6) ? 'Per Month' : (mc.paySchedule === 7) ? 'Per Semi-Month' : (mc.paySchedule === 8) ?  'Every Other Week' : (mc.paySchedule === 9) ? 'Per Week' : (mc.paySchedule === 10) ? 'Per Day' : '' }}:
+                                    </strong>
+                                </div>
+                                <input class="input-sm" ng-model="mc.rateMultilplier" type="number" />
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom: 4%;">
+                            <div class="input-group" align="center">
+                                <span><strong>Pay Date:</strong></span>
+                                <input type="datetime" uib-datepicker-popup ng-model="mc.timePaid" class="form-control well well-sm" is-open="mc.isTimePaidOpen" close-text="Close" />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-xs btn-simple" ng-click="mc.openDatePicker('timePaid')"><i class="glyphicon glyphicon-calendar" style="color:black"></i></button>
+                                </span>
+                            </div>
+                            <!--<div class="col-sm-4">
+                                <div class="input-group">
+                                    <span><strong>Beginning Pay Date:</strong></span>
+                                    <input type="text" uib-datepicker-popup ng-model="mc.beginDate" class="form-control well well-sm" is-open="mc.isBeginDateOpen" close-text="Close" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-xs btn-simple" ng-click="mc.openDatePicker('beginDate')"><i class="glyphicon glyphicon-calendar" style="color:black"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span><strong>Endding Pay Date:</strong></span>
+                                    <input type="text" uib-datepicker-popup ng-model="mc.endDate" class="form-control well well-sm" is-open="mc.isEndDateOpen" close-text="Close" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-xs btn-simple" ng-click="mc.openDatePicker('endDate')"><i class="glyphicon glyphicon-calendar" style="color:black"></i></button>
+                                    </span>
+                                </div>
+                            </div>-->
+                        </div>
+                        <div class="row">
+                            <div class="btn-group btn-group-xs">
+                                <button class="btn btn-round"
+                                        ng-disabled="!mc.name || !mc.type || !mc.paySchedule || !mc.timePaid"
+                                        ng-click="mc.submit()"
+                                        style="background-color: #58AA42">
+                                    {{ ((mc.id !== 0) ? 'Update' : 'Add') + ' ' + ((mc.type == "income") ? "Income" : "Expense") }}!
+                                </button>
+                                <button class="btn btn-round" style="background-color: #d1b100" ng-click="mc.reset()">
+                                    Reset!
+                                </button>
+                                <button class="btn btn-round"
+                                        ng-class="{'btn-toggle0': !item.isHiddenOnChart, 'btn-toggle1': item.isHiddenOnChart }"
+                                        ng-click="mc.toggleVisiblity(item)">
+                                    {{ (mc.isHiddenOnChart === false) ? 'Hide' : 'Show' }}
+                                </button>
+                                <button style="background-color: #CB2A2A" class="btn btn-round" ng-click="mc.cancel()">
+                                    Cancel
+                                </button>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-show="pg.isLoading">
+                    <div class="mdl-spinner mdl-js-spinner mdl-spinner--single-color is-active"></div>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+</script>

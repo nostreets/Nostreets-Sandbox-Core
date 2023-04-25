@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Nostreets_Sandbox_Core</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.OwinSelfHost" Version="5.2.9" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Nostreets.Extensions.Core\Nostreets.Extensions.Core\Nostreets.Extensions.Core.csproj" />
+    <ProjectReference Include="..\..\Nostreets.Orm.EF.Core\Nostreets.Orm.EF.Core\Nostreets.Orm.EF.Core.csproj" />
+    <ProjectReference Include="..\..\Nostreets.Web.Interceptor.Core\Nostreets.Web.Interceptor.Core\Nostreets.Web.Interceptor.Core.csproj" />
+    <ProjectReference Include="..\..\Nostreets.Web.Router.Core\Nostreets.Web.Router.Core\Nostreets.Web.Router.Core.csproj" />
+    <ProjectReference Include="..\Nostreets Services\Nostreets Services.csproj" />
+  </ItemGroup>
+
+</Project>

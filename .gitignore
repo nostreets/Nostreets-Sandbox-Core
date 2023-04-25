@@ -402,3 +402,4 @@ FodyWeavers.xsd
 **/obj
 wwwroot/css/bundle
 wwwroot/js/bundle
+appsettings.*

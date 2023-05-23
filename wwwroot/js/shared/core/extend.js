@@ -54,8 +54,11 @@ String.prototype.safeName = function () {
 
 
 String.prototype.replaceAt = function (index, replacement, replacementLength) {
+    if (typeof this !== 'string') {
+        console.log(`replaceAt can only be called on a string. Type is '${typeof this}'`);
+        return null;
+    }
     return this.substr(0, index) + replacement + this.substr(index + replacementLength || index + replacement.length);
 }
-
 
   

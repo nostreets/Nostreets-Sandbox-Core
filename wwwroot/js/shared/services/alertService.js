@@ -7,6 +7,10 @@
     ServiceFactory.$inject = ['toastr'];
 
     function ServiceFactory(toastr) {
+        //if (typeof toastr !== 'function') {
+        //    throw new Error('toastr is not a function');
+        //}
+
         var svc = this;
 
         svc.toastr = toastr;

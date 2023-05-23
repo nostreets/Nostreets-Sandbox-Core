@@ -541,7 +541,7 @@
                 },
                 plugins: [
                     chartistScroll({ height: "8px" }),
-                    Chartist.plugins.tooltip()
+                    //Chartist.plugins.tooltip()
                     //Chartist.plugins.zoom({ onZoom: onZoom })
                 ]
 

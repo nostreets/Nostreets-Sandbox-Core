@@ -2,7 +2,7 @@
   //// ----------------- DEV ----------------- ////
   //+BOOTSTRAP CSS
   {
-    "outputFileName": "wwwroot/css/bundle/dev/bootstrap.css",
+    "outputFileName": "wwwroot/bundle/css/dev/bootstrap.css",
     "inputFiles": [
       "wwwroot/lib/bootstrap/dist/css/bootstrap.css",
       "wwwroot/lib/bootstrap/dist/css/bootstrap-theme.css"
@@ -15,7 +15,7 @@
   },
   //+NOSTREETS PORTFOLIO CSS
   {
-    "outputFileName": "wwwroot/css/bundle/dev/nostreets.css",
+    "outputFileName": "wwwroot/bundle/css/dev/nostreets.css",
     "inputFiles": [
       //+MATERIAL DESIGN LITE
       "wwwroot/lib/material-design-lite/material.css",
@@ -41,7 +41,7 @@
   },
   //+JQUERY
   {
-    "outputFileName": "wwwroot/js/bundle/dev/jquery.js",
+    "outputFileName": "wwwroot/bundle/js/dev/jquery.js",
     "inputFiles": [
       "wwwroot/lib/jquery/dist/jquery.js"
     ],
@@ -53,7 +53,7 @@
   },
   //+JQUERY DEPENDENIES
   {
-    "outputFileName": "wwwroot/js/bundle/dev/jquery-childs.js",
+    "outputFileName": "wwwroot/bundle/js/dev/jquery-childs.js",
     "inputFiles": [
 
       //+VALIDATION
@@ -77,7 +77,7 @@
   },
   //+ANGULAR
   {
-    "outputFileName": "wwwroot/js/bundle/dev/angular.js",
+    "outputFileName": "wwwroot/bundle/js/dev/angular.js",
     "inputFiles": [
       "wwwroot/lib/angular.js/angular.js"
     ],
@@ -89,7 +89,7 @@
   },
   //+ANGULAR DEPENDENIES
   {
-    "outputFileName": "wwwroot/js/bundle/dev/angular-childs.js",
+    "outputFileName": "wwwroot/bundle/js/dev/angular-childs.js",
     "inputFiles": [
       "wwwroot/lib/angular-animate/angular-animate.js",
       "wwwroot/lib/angular-sanitize/angular-sanitize.js",
@@ -98,12 +98,11 @@
       "wwwroot/lib/angular-route/angular-route.js",
       "wwwroot/lib/angular-ui-router/release/angular-ui-router.js",
 
-      "wwwroot/lib/angular-toastr/dist/angular-toastr.tpls.min.js",
-      "wwwroot/lib/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js",
-
+      "wwwroot/lib/angular-toastr/angular-toastr.js",
+      "wwwroot/lib/angular-ui-bootstrap/ui-bootstrap.js",
 
       "wwwroot/lib/tinycolor/tinycolor.js",
-      "wwwroot/lib/angularjs-color-picker/dist/angularjs-color-picker.js"
+      "wwwroot/lib/angularjs-color-picker/angularjs-color-picker.js"
     ],
     "minify": {
       "enabled": false,
@@ -111,13 +110,60 @@
     },
     "sourceMap": false
   },
-  //+NOSTREETS PORTFOLIO SCRIPTS
+
+  //+NOSTREETS PORTFOLIO SCRIPTS BASE LIBARIES
   {
-    "outputFileName": "wwwroot/js/bundle/dev/nostreets.js",
+    "outputFileName": "wwwroot/bundle/js/dev/base.js",
+    "inputFiles": [
+      //+OTHER
+      "wwwroot/lib/assets/sweetalert2.js",
+      "wwwroot/lib/chartist/chartist.min.js", //Chartist.js
+      "wwwroot/lib/assets/particles.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/bundle/js/dev/nostreets.js",
     "inputFiles": [
       "wwwroot/js/shared/core/page.js",
       "wwwroot/js/nostreets/app/page.js",
-      "wwwroot/js/shared/core/extend.js",
+      "wwwroot/js/shared/core/extend.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+
+  //+NOSTREETS PORTFOLIO SCRIPTS
+  {
+    "outputFileName": "wwwroot/bundle/js/dev/nostreets-addons.js",
+    "inputFiles": [
+      // Chartist Plugins
+      //"wwwroot/lib/chartist-plugin-tooltip/chartist-plugin-tooltip.min.js",
+      "wwwroot/lib/assets/chartist-plugin-zoom.min.js",
+      // Background Particles
+      "wwwroot/js/nostreets/renderNostreetsParticles.js",
+      // Nostreets Chartist Scroll Plugin
+      "wwwroot/js/shared/services/nostreetsChartistScrollPlugin.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  //+NOSTREETS PORTFOLIO ANGULAR DEPENDENIES
+  {
+    "outputFileName": "wwwroot/bundle/js/dev/nostreets-ng.js",
+    "inputFiles": [
+      "wwwroot/js/nostreets/app/configs/routeProviderConfig.js",
+      "wwwroot/js/shared/services/apiService.js",
       "wwwroot/js/shared/services/alertService.js",
       "wwwroot/js/shared/services/systemEvent.service.js",
       "wwwroot/js/shared/core/baseController.js"
@@ -128,43 +174,9 @@
     },
     "sourceMap": false
   },
-  //+NOSTREETS PORTFOLIO SCRIPTS
-  {
-    "outputFileName": "wwwroot/js/bundle/dev/nostreets-addons.js",
-    "inputFiles": [
-      //+OTHER
-      "wwwroot/lib/assets/sweetalert2.js",
-      "wwwroot/lib/chartist/chartist.min.js", //Chartist.js
-      "wwwroot/lib/chartist-plugin-tooltip/chartist-plugin-tooltip.min.js",
-      "wwwroot/lib/assets/chartist-plugin-zoom.min.js",
-
-      //+CUSTOM
-      "wwwroot/lib/assets/particles.js",
-      "wwwroot/lib/assets/renderNostreetsParticles.js", // Background Particles
-      "wwwroot/js/shared/services/nostreetsChartistScrollPlugin.js", // Nostreets Chartist Scroll Plugin
-    ],
-    "minify": {
-      "enabled": false,
-      "renameLocals": true
-    },
-    "sourceMap": false
-  },
-  //+NOSTREETS PORTFOLIO ANGULAR
-  {
-    "outputFileName": "wwwroot/js/bundle/dev/nostreets-ng.js",
-    "inputFiles": [
-      "wwwroot/js/nostreets/app/configs/routeProviderConfig.js",
-      "wwwroot/js/shared/services/apiService.js"
-    ],
-    "minify": {
-      "enabled": false,
-      "renameLocals": true
-    },
-    "sourceMap": false
-  },
   //+OBL CSS
   {
-    "outputFileName": "wwwroot/css/bundle/dev/obl.css",
+    "outputFileName": "wwwroot/bundle/css/dev/obl.css",
     "inputFiles": [
       //+MATERIAL DESIGN LITE
       "wwwroot/lib/material-design-lite/material.css",
@@ -194,7 +206,7 @@
   },
   //+OBL SCRIPTS
   {
-    "outputFileName": "wwwroot/js/bundle/dev/obl.js",
+    "outputFileName": "wwwroot/bundle/js/dev/obl.js",
     "inputFiles": [
       //+3RD PARTY CODE
       "wwwroot/lib/dat.gui/build/dat.gui.js",
@@ -230,7 +242,7 @@
   },
   //+OBL ANGULAR
   {
-    "outputFileName": "wwwroot/js/bundle/dev/ng-obl.js",
+    "outputFileName": "wwwroot/bundle/js/dev/ng-obl.js",
     "inputFiles": [
       //+CUSTOM ANGULARJS SERVICES
       "wwwroot/js/shared/services/alertService.js",

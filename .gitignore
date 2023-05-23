@@ -400,7 +400,6 @@ FodyWeavers.xsd
 
 **/bin
 **/obj
-wwwroot/css/bundle
-wwwroot/js/bundle
-wwwroot/lib
 appsettings.*
+/wwwroot/bundle
+/wwwroot/lib
